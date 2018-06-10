@@ -154,7 +154,7 @@ class CI_Exceptions {
 	 *
 	 * @return	string	Error page output
 	 */
-	public function show_error($heading, $message, $template = 'error_general', $status_code = 500)
+	public function show_error($heading, $message, $template = 'error_general', $status_code = 500,$time = 5)
 	{
 		$templates_path = config_item('error_views_path');
 		if (empty($templates_path))

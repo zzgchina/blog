@@ -12,6 +12,9 @@
                     <input name="name" type="text" class="kuang_txt" placeholder="手机号/用户名">
                     <?php echo form_error('password')?>
                     <input name="password" type="password" class="kuang_txt" placeholder="密码">
+                    <?php echo form_error('captcha')?>
+                    <input type="text" name="captcha"  placeholder="输入验证码">
+                    <img src="<?php echo site_url('login/captcha'); ?>" onclick="this.src = this.src+'?'+Math.random()">
                     <div>
                         <a href="#">忘记密码？</a><input name="" type="checkbox" value="" checked><span>记住我</span>
                     </div>

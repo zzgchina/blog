@@ -20,10 +20,13 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-        if(!$this->login_status){
-            redirect('login/index');
-            exit;
-        }
+        unset($_SESSION['user'],
+       $_SESSION['code']);
 		$this->load->view('welcome_message');
 	}
+    public function index1()
+    {
+
+        $this->load->view('welcome_message');
+    }
 }

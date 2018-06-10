@@ -400,7 +400,7 @@ if ( ! function_exists('show_error'))
 	 * @param	string
 	 * @return	void
 	 */
-	function show_error($message, $status_code = 500, $heading = 'An Error Was Encountered')
+	function show_error($message, $status_code = 500, $heading = 'An Error Was Encountered',$time = 5)
 	{
 		$status_code = abs($status_code);
 		if ($status_code < 100)
@@ -414,7 +414,7 @@ if ( ! function_exists('show_error'))
 		}
 
 		$_error =& load_class('Exceptions', 'core');
-		echo $_error->show_error($heading, $message, 'error_general', $status_code);
+		echo $_error->show_error($heading, $message, 'error_general', $status_code,$time);
 		exit($exit_status);
 	}
 }

@@ -13,8 +13,13 @@ class MY_controller extends CI_Controller
     {
         parent::__construct();
         session_start();
-        $this->login_status = $this->is_login();
+        if(!$this->is_login()){
+            redirect('login/index');
+        }
+
     }
+
+
 
     /**
      * 检查是否登录
@@ -29,5 +34,35 @@ class MY_controller extends CI_Controller
         {
             return FALSE;
         }
+    }
+
+    /**
+     * 错误页面
+     * @param $msg
+     * @param int $time
+     * @param string $url
+     * @return mixed
+     */
+    public function my_error($msg,$time = 5,$url = '')
+    {
+        $data['msg'] = $msg;
+        $data['time'] = $time;
+        $data['url'] = $url;
+        return  $this->load->view('errors/self/error',$data);
+    }
+
+    /**
+     * 成功页面
+     * @param $msg
+     * @param int $time
+     * @param string $url
+     * @return mixed
+     */
+    public function my_success($msg,$time = 5,$url = '')
+    {
+        $data['msg'] = $msg;
+        $data['time'] = $time;
+        $data['url'] = $url;
+        return  $this->load->view('errors/self/success',$data);
     }
 }
