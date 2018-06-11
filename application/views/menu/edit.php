@@ -1,7 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-$this->load->view('commom/head');
-?>
+
 <div class="uk-panel uk-panel-box">
     <div class="uk-panel uk-panel-header">
         <h3 class="uk-panel-title">
@@ -163,6 +160,3 @@ $this->load->view('commom/head');
         <br>
     </form>
 </div>
-<?php
-$this->load->view('commom/foot');
-?>

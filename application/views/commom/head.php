@@ -76,7 +76,9 @@
                         <li class="uk-parent">
                             <a href="#"><i class="fa fa-th-list"></i>菜单列表</a>
                             <ul class="uk-nav-sub">
-                                <li class="uk-margin-left"><?php echo anchor('menu/edit','<i class="fa fa-edit"></i> 添加菜单'); ?></li>
+                                <li class="uk-margin-left">
+                                    <a target="<?php echo site_url('menu/edit'); ?>" class="list-side">添加菜单</a>
+                                 </li>
                                 <li class="uk-margin-left"><?php echo anchor('Article/index','<i class="uk-icon uk-icon-list"></i> 查看'); ?></li>
                             </ul>
                         </li>
