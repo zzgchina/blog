@@ -12,10 +12,20 @@ class Menu extends MY_controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('menu');
+
     }
     public function index()
     {
 
+    }
+    public function edit($id = '')
+    {
+        var_dump(332);
+        $data = array();
+       if($id !== ''){
+           $this->load->model('menu');
+         $data =  $this->menu->get($id);
+       }
+        $this->load->view('menu/edit',$data);
     }
 }
