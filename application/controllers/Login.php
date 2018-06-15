@@ -28,7 +28,6 @@ class Login extends CI_controller
         );
 
         $data['cap'] = create_captcha($vals);
-        $this->load->view('commom/head',$data);
         $this->load->view('login/login',$token);
     }
     public function usercheck()
@@ -54,7 +53,7 @@ class Login extends CI_controller
         $this->load->library('captcha');
         $this->load->library('session');//加载这个代替类
         $captcha= $this->captcha->getCaptcha();  //生成的验证码值
-        $this->session->set_userdata('captcha', $captcha);   //保存验证码值
+        $this->session->set_userdata('captcha', strtolower($captcha));   //保存验证码值
         $this->captcha->showImg();               //生成验证码图片
     }
     public function captchacheck($msg)

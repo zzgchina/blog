@@ -18,7 +18,6 @@ class User extends CI_Model
         if(empty($re) OR ($re['password_check'] !== md5($re['token'].$password))){
             return FALSE;
         }
-        session_start();
         $_SESSION['user'] = $this->input->post('name');
         $_SESSION['code'] = $re['id'];
 

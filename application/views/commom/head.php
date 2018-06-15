@@ -22,7 +22,7 @@
         <nav class="uk-navbar">
             <ul class="uk-navbar-nav">
                 <li class="uk-navbar-brand">
-                    <img src="<?php echo base_url(IMG_PATH.'qinblog_bk.png'); ?>" width="130">
+                    <img src="<?php echo base_url('qinblog_bk.png'); ?>" width="130">
                 </li>
                 <li class="uk-hidden-small">
                     <?php echo anchor('Manage/dash','<span class="uk-text-primary uk-text-bold">首页</span>'); ?>

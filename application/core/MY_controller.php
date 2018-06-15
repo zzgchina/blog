@@ -12,11 +12,9 @@ class MY_controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        session_start();
         if(!$this->is_login()){
             redirect('login/index');
         }
-
     }
 
 

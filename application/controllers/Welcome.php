@@ -20,12 +20,7 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-//        if(!$this->login_status){
-//            redirect('login/index');
-//            exit;
-//        }
-
-		$this->load->view('welcome_message');
+		$this->load->view('welcome_message',array('title'=>'zzg的博客'));
 	}
     public function index1()
     {
