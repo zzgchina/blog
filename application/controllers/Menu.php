@@ -20,7 +20,6 @@ class Menu extends MY_controller
     }
     public function edit($id = '')
     {
-        var_dump(332);
         $data = array();
        if($id !== ''){
            $this->load->model('menu');
