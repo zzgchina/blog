@@ -12,13 +12,17 @@ class Captcha
     private $width;
     private $height;
     private $codeNum;
+    private $fron;
+    private $size;
     private $code;
     private $im;
 
-    function __construct($width=80, $height=30, $codeNum=4){
-        $this->width = $width;
-        $this->height = $height;
-        $this->codeNum = $codeNum;
+    function __construct($param){
+        $this->width = $param['width']?:100;
+        $this->height = $param['height']?:50;
+        $this->codeNum = $param['codeNum']?:4;
+        $this->fron = !empty($param['fron'])?$param['fron']:'';
+        $this->size = !empty($param['size'])?$param['size']:21;
     }
 
     function showImg(){
@@ -69,10 +73,19 @@ class Captcha
     private function setCaptcha(){
         for ($i = 0; $i < $this->codeNum; $i++) {
             $color = imagecolorallocate($this->im, rand(50, 250), rand(100, 250), rand(128, 250));
-            $size = rand(floor($this->height / 5), floor($this->height / 3));
+//            $size = rand(floor($this->height / 5), floor($this->height / 3));
+            $size = $this->size;
             $x = floor($this->width / $this->codeNum) * $i + 5;
-            $y = rand(0, $this->height - 20);
-            imagechar($this->im, $size, $x, $y, $this->code{$i}, $color);
+            $y = rand(20, $this->height - 10);
+            if(empty($this->fron))
+            {
+                imagechar($this->im, $size, $x, $y, $this->code{$i}, $color);
+            }
+            else{
+                imagettftext($this->im, $size,0, $x, $y,  $color,$this->fron,$this->code{$i});
+
+            }
+
         }
     }
 

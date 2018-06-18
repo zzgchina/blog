@@ -50,7 +50,7 @@ class Login extends CI_controller
     }
     public function captcha()
     {
-        $this->load->library('captcha');
+        $this->load->library('captcha',array('width'=>100,'height'=>50,'codeNum'=>4,'fron'=>'./resouse/1.ttf'));
         $this->load->library('session');//加载这个代替类
         $captcha= $this->captcha->getCaptcha();  //生成的验证码值
         $this->session->set_userdata('captcha', strtolower($captcha));   //保存验证码值
