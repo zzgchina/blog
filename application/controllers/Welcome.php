@@ -20,7 +20,8 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message',array('title'=>'zzg的博客'));
+
+		$this->load->view('index',array('title'=>'zzg的博客'));
 	}
     public function index1()
     {
