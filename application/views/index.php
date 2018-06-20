@@ -234,7 +234,7 @@
         }
         function logout(){
             if (confirm("{fc_lang('您确定要退出吗？')}"))
-                top.location = '{dr_url("login/logout")}';
+                top.location = '<?php echo site_url('login/loginout'); ?>';
             return false;
         }
         function dr_loading() {

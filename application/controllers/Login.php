@@ -15,7 +15,7 @@ class Login extends CI_controller
         $this->form_validation->set_rules('captcha','验证码','required|callback_captchacheck');
         if($this->form_validation->run())
         {
-            redirect('welcome/index');
+            redirect('');
         }
 
         $data['title'] =  $this->config->item('web_name').html_escape('登录');
