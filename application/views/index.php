@@ -9,56 +9,12 @@
     <title><?php echo $title; ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="./resouse/statics/admin/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="./resouse/statics/admin/css/font-awesome/css/font-awesome.css"rel="stylesheet" type="text/css" />
-    <link href="./resouse/statics/admin/css/table_form.css" rel="stylesheet"  />
-    <link href="./resouse/statics/admin/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="./resouse/statics/admin/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="./resouse/statics/admin/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-    <link href="./resouse/statics/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-    <link href="./resouse/statics/admin/global/plugins/jquery-notific8/jquery.notific8.min.css" rel="stylesheet" type="text/css" />
-    <!-- END GLOBAL MANDATORY STYLES -->
-    <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="./resouse/statics/admin/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
-    <link href="./resouse/statics/admin/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
-    <link href="./resouse/statics/admin/my.css" rel="stylesheet" type="text/css" />
-    <!-- END THEME GLOBAL STYLES -->
-    <!-- BEGIN THEME LAYOUT STYLES -->
-    <link href="./resouse/statics/admin/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
-    <!-- END THEME LAYOUT STYLES -->
-    <!--[if lt IE 9]>
-    <script src="./resouse/statics/admin/global/plugins/respond.min.js"></script>
-    <script src="./resouse/statics/admin/global/plugins/excanvas.min.js"></script>
-    <![endif]-->
-    <!-- BEGIN CORE PLUGINS -->
-    <script src="./resouse/statics/admin/global/plugins/jquery.min.js" type="text/javascript"></script>
-<!--    <script type="text/javascript">var dr_index = 1;var siteurl = "{SITE_PATH}{SELF}";var memberpath = "{MEMBER_PATH}";var sys_theme = "{THEME_PATH}admin/";</script>-->
-<!--    <script src="./resouse/statics/js/{SITE_LANGUAGE}.js" type="text/javascript"></script>-->
-    <script src="./resouse/statics/js/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="./resouse/statics/js/jquery.cookie.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="./resouse/statics/js/ui-dialog.css">
-    <script type="text/javascript"t src="./resouse/statics/js/dialog-plus.js"></script>
-    <script type="text/javascript" src="./resouse/statics/js/jquery.artDialog.js?skin=default"></script>
-    <script src="./resouse/statics/js/validate.js" type="text/javascript"></script>
-    <script src="./resouse/statics/js/admin.js" type="text/javascript"></script>
-    <script src="./resouse/statics/js/dayrui.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/global/plugins/jquery.scrollTo.min.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/global/plugins/jquery-notific8/jquery.notific8.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    <script src="./resouse/statics/admin/global/scripts/app.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="./resouse/statics/admin/tree/tree.js"></script>
-    <!-- END THEME GLOBAL SCRIPTS -->
-    <!-- BEGIN THEME LAYOUT SCRIPTS -->
-    <script src="./resouse/statics/admin/layouts/layout/scripts/layout.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
-    <script src="./resouse/statics/admin/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+   <link href="./resouse/statics/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link href="./resouse/statics/admin/my.css" rel="stylesheet" type="text/css" />
+    <link href="./resouse/statics/admin/css/layout.min.css" rel="stylesheet" type="text/css" />
+   <script src="./resouse/statics/js/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
 
         $(function(){
 
@@ -305,12 +261,12 @@
                     <a class="dropdown-toggle popovers top-link" data-container="body" data-trigger="hover" data-placement="bottom" data-content="" href="" target="right"><i class="icon-refresh"></i></a>
                 </li>
 
-                <li class="dropdown dropdown-user">
-                    <a href="javascript:;" style=" height: 70px;" class="dropdown-toggle top-link" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="{$admin['username']}" class="img-circle" src="" />
+                <li class="dropdown dropdown-user logining">
+                    <a href="javascript:;" style=" height: 70px;" class="dropdown-toggle top-link " data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img alt="dfsvsdvdvdfsdvsd" class="img-circle" src="" />
                         <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-default">
+                    <ul class="dropdown-menu dropdown-menu-default ul">
                         <li><a href="" target="_blank"><i class="fa fa-user"></i>  </a></li>
                         <li><a href="" target="_blank"><i class="fa fa-home"></i> </a></li>
                         <li><a href="javascript:;" onClick="logout();"><i class="fa fa-sign-in"></i> 退出系统</a></li>
@@ -387,7 +343,7 @@
             <div class="page-content">
 
 
-                <iframe name="right" id="rightMain" src="{dr_url('home/main')}&cache={SYS_TIME}" url="{dr_url('home/main')}&cache={SYS_TIME}" frameborder="false" scrolling="auto" style="border:none; margin-bottom:0px;" width="100%" height="auto" allowtransparency="true"></iframe>
+                <iframe name="right" id="rightMain" src="" url="" frameborder="false" scrolling="auto" style="border:none; margin-bottom:0px;" width="100%" height="auto" allowtransparency="true"></iframe>
 
             </div>
         </div>
@@ -399,8 +355,23 @@
 </body>
 
 <script>
+    var timer;
     $('.hided').on('click',function(){
         $(this).siblings('ul').toggle();
     })
+    $('.logining').on({mouseover:function(){
+            $(this).children('ul').show();
+        },mouseleave:function(){
+            timer = setTimeout(function(){
+                $('.ul').hide();
+            },1000)
+        }})
+    $(".ul").mouseover(function () {
+        clearTimeout(timer);
+    });
+    $(".ul").mouseout(function () {
+        $(".ul").hide();
+    });
+
 </script>
 </html>
