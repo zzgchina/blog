@@ -45,9 +45,10 @@
                         <td>
                             <!-- 正常分辨率 -->
                             <div class="uk-button-group uk-hidden-small">
-                                <?php echo anchor('Article/view/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i>',array('class'=>'uk-button')); ?>
-                                <?php echo anchor('Article/edit_page/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i>',array('class'=>'uk-button')); ?>
-                                <?php echo anchor('Article/delete/'.$list['id'],'<i class="uk-icon uk-icon-trash"></i>',array('class'=>'uk-button del')); ?>
+                                <?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i>View',array('class'=>'uk-button')); ?>
+                                <?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i>Edit',array('class'=>'uk-button')); ?>
+                                <?php echo anchor('menu/del/'.$list['id'].'/'.$list['token'],'<i class="uk-icon uk-icon-trash"></i>Delete',array('class'=>'uk-button del')); ?>
+<!--                                <a href="javascript:del(--><?//=$list['id']?><!--,'--><?//=$list['token']?><!--')" class="uk-button del"><i class="uk-icon uk-icon-trash"></i>Delete</a>-->
                             </div><!-- 正常分辨率 end -->
                             <!-- 小分辨率 -->
                             <div class="uk-button-group uk-visible-small">
@@ -55,8 +56,8 @@
                                     <button class="uk-button uk-button-small"><i class="uk-icon-caret-down"></i></button>
                                     <div class="uk-dropdown uk-dropdown-small">
                                         <ul class="uk-nav uk-nav-dropdown">
-                                            <li><?php echo anchor('Article/view/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i> View'); ?></li>
-                                            <li><?php echo anchor('Article/edit_page/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i> Edit'); ?></li>
+                                            <li><?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i> View'); ?></li>
+                                            <li><?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i> Edit'); ?></li>
                                             <li class="uk-nav-divider"></li>
                                             <li><?php echo anchor('Article/delete/'.$list['id'],'<i class="uk-icon uk-icon-trash"></i> Delete',array('class'=>'del')); ?></li>
                                         </ul>

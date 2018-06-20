@@ -12,7 +12,7 @@
             <label class="uk-form-label uk-text-bold
             uk-text-primary" for="web_title">名称</label>
             <div class="uk-form-controls">
-                <input class="uk-form-large uk-form-width-large" type="text" id="web_title" name="name" placeholder="输入名称..."  maxlength="30" value="">
+                <input class="uk-form-large uk-form-width-large" type="text" id="web_title" name="name" placeholder="输入名称..."  maxlength="30" value="<?php echo isset($name)?$name:''; ?>">
                 <?php echo form_error('name'); ?>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <select name="pid" id="">
                     <option value="0">顶级菜单</option>
                     <?php foreach ($menu as $k=>$v){ ?>
-                        <option value="<?php echo $v['id']; ?>"><?php echo $v['name']; ?></option>
+                        <option value="<?php echo $v['id']; ?>" <?php echo (isset($pid) && $pid == $v['id'])?'selected':''; ?>><?php echo $v['name']; ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -30,21 +30,23 @@
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">图标</label>
             <div class="uk-form-controls">
-                <input class="uk-form-large" type="text" id="ICP" name="ico" placeholder="图标..."  maxlength="30" value="" >
+                <input class="uk-form-large" type="text" id="ICP" name="ico" placeholder="图标..."  maxlength="30" value="<?php echo isset($ico)?$ico:''; ?>" >
                 <span><a href="http://fontawesome.dashgame.com/" target="_blank">图标库</a>，直接填入图标名</span>
             </div>
         </div>
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">路由</label>
             <div class="uk-form-controls">
-                <input class="uk-form-large" type="text" id="ICP" name="url" placeholder="菜单路径" maxlength="30" value="" >
+                <input class="uk-form-large" type="text" id="ICP" name="url" placeholder="菜单路径" maxlength="30" value="<?php echo isset($url)?:''; ?>" >
                 <span>菜单路径</span>
                 <?php echo form_error('url'); ?>
             </div>
         </div>
         <hr><br>
         <!-- token令牌 -->
-        <input type="hidden" name="" value="" />
+        <input type="hidden" name="<?php echo $csrf['name']; ?>" value="<?php echo $csrf['hash']; ?>" />
+        <input type="hidden" name="id" value="<?= isset($id)?$id:''; ?>" />
+        <input type="hidden" name="token" value="<?= isset($token)?$token:''; ?>" />
         <br><br><hr><br>
         <button id="webinfo_submit" class="uk-button uk-button-success uk-button-large uk-align-center" type="submit">确认修改</button>
         <br>
