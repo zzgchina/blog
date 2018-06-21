@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2018-06-20 10:03:06
+-- Generation Time: 2018-06-21 10:01:36
 -- 服务器版本： 5.7.21
 -- PHP Version: 7.0.29
 
@@ -25,6 +25,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `blog_column`
+--
+
+DROP TABLE IF EXISTS `blog_column`;
+CREATE TABLE IF NOT EXISTS `blog_column` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '栏目表',
+  `name` int(11) NOT NULL COMMENT '名称',
+  `status` tinyint(1) NOT NULL COMMENT '状态，1允许',
+  `adddate` int(11) NOT NULL COMMENT '添加日期',
+  `pid` int(11) NOT NULL DEFAULT '1' COMMENT '上级栏目id,顶级栏目为1',
+  `dexscript` int(11) NOT NULL COMMENT '栏目描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `blog_menu`
 --
 
@@ -39,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `blog_menu` (
   `url` varchar(20) NOT NULL COMMENT '菜单路由',
   `token` varchar(32) NOT NULL COMMENT '修改检验值',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `blog_menu`
@@ -47,7 +64,9 @@ CREATE TABLE IF NOT EXISTS `blog_menu` (
 
 INSERT INTO `blog_menu` (`id`, `name`, `ico`, `pid`, `addtime`, `status`, `url`, `token`) VALUES
 (4, 'gd', 'ff', 2, 1529402615, 1, 'fdd', '1'),
-(5, 'admin', 'ambulance', 0, 1529485461, 1, 'menu/edit', '14487c907fb189c919635ae989a5fb93');
+(5, '栏目', 'ambulance', 0, 1529575045, 1, '1', 'abea9603b0b33b91d2bd0f93f552915a'),
+(6, '栏目1', 'e', 5, 1529575228, 1, 'q', '0d2f43026d263c86499be4c346c4e541'),
+(7, '栏目3', 'd', 5, 1529575253, 1, 'd', '5480060aa2fa7e62c76f6f411e8afeda');
 
 -- --------------------------------------------------------
 

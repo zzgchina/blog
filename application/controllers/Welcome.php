@@ -20,6 +20,8 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
+	    $this->load->model('menuq');
+        $mes = $this->menuq->get('',' name,id,ico ',' where 1=1');
 
 		$this->load->view('index',array('title'=>'zzg的博客'));
 	}

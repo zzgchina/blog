@@ -1,24 +1,19 @@
 <?php
 /**
- * 菜单列表
  * Created by PhpStorm.
  * User: fz-zzg
- * Date: 2018/6/11
- * Time: 14:54
+ * Date: 2018/6/21
+ * Time: 17:11
  */
 
-class Menu extends MY_controller
+class Column extends MY_controller
 {
     public function __construct()
     {
         parent::__construct();
 
-        $this->load->model('menuq');
-        $this->output->enable_profiler(TRUE);
-    }
-    public function index()
-    {
-        echo 'index';
+        $this->load->model('column');
+        $this->output->enable_profiler(FALSE);
     }
 
     /**
@@ -46,10 +41,7 @@ class Menu extends MY_controller
             $res = $this->menuq->add($data);
             if($res['status'])
             {
-                redirect('menu/get_list');
-            }
-            else{
-                echo 'shibai';
+                echo $res['msg'];
             }
         }
 
@@ -103,5 +95,4 @@ class Menu extends MY_controller
         $res = $this->menuq->del($data);
         redirect('menu/get_list');
     }
-
 }

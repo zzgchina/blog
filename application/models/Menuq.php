@@ -10,13 +10,6 @@ class Menuq extends CI_Model
 {
     public $table = 'blog_menu';
     public $tablename = 'Menu';
-    /**
-     * 查看菜单
-     */
-    public function view()
-    {
-
-    }
 
     /**
      * 添加
@@ -46,6 +39,7 @@ class Menuq extends CI_Model
         }
 
     }
+
     /**
      * 删除
      */
@@ -55,14 +49,6 @@ class Menuq extends CI_Model
         $this->db->where('id',$data['id']);
         if($this->db->delete($this->tablename)) return array('status'=>TRUE,'msg'=>'删除成功');
         return array('status'=>FALSE,'msg'=>'连接异常，请稍后再试');
-    }
-
-    /**
-     * 更新
-     */
-    public function update()
-    {
-
     }
 
     /**
@@ -82,5 +68,6 @@ class Menuq extends CI_Model
         $query = $this->db->query('select '.$field.' from '.$this->table.$where,$data);
         return $query->result_array();
     }
+
 
 }
