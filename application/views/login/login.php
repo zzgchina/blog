@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $title; ?> </title>
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('resouse/admin/view/css/login.css');  ?>">
-</head>
+<!-- qq登录js-->
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="APPID" data-redirecturi="REDIRECTURI" charset="utf-8"></script></head>
 <body class="login_bj" >
 <div class="zhuce_body">
     <div class="logo"><a href="#"><img src="<?php echo base_url('/resouse/admin/view/images/logo.png'); ?>" width="114" height="54" border="0"></a></div>
@@ -33,7 +34,12 @@
             </div>
             <div class="bj_right">
                 <p>使用以下账号直接登录</p>
-                <a href="#" class="zhuce_qq">QQ注册</a>
+                <a  class="zhuce_qq" id="qqLoginBtn">QQ注册</a>
+                <script type="text/javascript">
+                    QC.Login({
+                        btnId:"qqLoginBtn"    //插入按钮的节点id
+                    });
+                </script>
                 <a href="#" class="zhuce_wb">微博注册</a>
                 <a href="#" class="zhuce_wx">微信注册</a>
                 <a href="#" class="zhuce">直接注册</a>
