@@ -41,12 +41,15 @@ class Menuq extends CI_Model
     }
 
     /**
-     * 删除
+     * 删除本身和子元素
+     * @param $data
+     * @return array
      */
     public function del($data)
     {
         if(empty($res = $this->get('',' id ',' where id='.$data['id'].' AND token='.$this->db->escape($data['token'])))) return array('status'=>FALSE,'msg'=>'非法参数');
         $this->db->where('id',$data['id']);
+        $this->db->or_where('pid',$data['id']);
         if($this->db->delete($this->tablename)) return array('status'=>TRUE,'msg'=>'删除成功');
         return array('status'=>FALSE,'msg'=>'连接异常，请稍后再试');
     }

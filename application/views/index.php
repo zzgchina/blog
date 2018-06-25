@@ -333,33 +333,25 @@
                             </li>
                 </ul>
                     </li>
+                    <?php foreach ($column as $v){?>
                     <li id="D_M_2" class="dr_left nav-item active open ">
                         <a href="javascript:;" class="nav-link nav-toggle hided">
                             <i class="fa fa-home"></i>
-                            <span class="title">配置项</span>
+                            <span class="title"><?= $v['name']; ?></span>
                             <span class="arrow open"></span>
                         </a>
                         <ul class="sub-menu">
+                            <?php foreach ($v['son'] as $vv){?>
                             <li tid="1" fid="2" id="_MP_3" class="dr_link nav-item active open">
                                 <a href="javascript:_MP('3','<?php echo site_url('menu/get_list'); ?>');">
                                     <i class="iconm fa fa-home"></i>
-                                    <span class="title">配置菜单</span>
+                                    <span class="title"><?php echo $vv['name']; ?></span>
                                 </a>
                             </li>
-                            <li tid="1" fid="2" id="_MP_4" class="dr_link nav-item">
-                                <a href="javascript:_MP('4', 'index.php');">
-                                    <i class="iconm fa fa-user"></i>
-                                    <span class="title">资料修改</span>
-                                </a>
-                            </li>
-                            <li tid="1" fid="2" id="_MP_5" class="dr_link nav-item">
-                                <a href="javascript:_MP('5', 'admin.php?c=root&amp;m=log');">
-                                    <i class="iconm fa fa-calendar-check-o"></i>
-                                    <span class="title">登录日志</span>
-                                </a>
-                            </li>
+                            <?php } ?>
                         </ul>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
 
