@@ -21,7 +21,7 @@ class Welcome extends MY_Controller {
 	public function index()
 	{
 	    $this->load->model('menuq');
-        $mes = $this->menuq->get('',' name,id,ico ,pid',' where 1=1');
+        $mes = $this->menuq->get('',' name,id,ico ,pid,url',' where 1=1');
         $mes = get_son($mes);
 		$this->load->view('index',array('title'=>'zzg的博客','column'=>$mes));
 	}

@@ -336,15 +336,15 @@
                     <?php foreach ($column as $v){?>
                     <li id="D_M_2" class="dr_left nav-item active open ">
                         <a href="javascript:;" class="nav-link nav-toggle hided">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-<?= $v['ico']; ?>"></i>
                             <span class="title"><?= $v['name']; ?></span>
                             <span class="arrow open"></span>
                         </a>
                         <ul class="sub-menu">
                             <?php foreach ($v['son'] as $vv){?>
                             <li tid="1" fid="2" id="_MP_3" class="dr_link nav-item active open">
-                                <a href="javascript:_MP('3','<?php echo site_url('menu/get_list'); ?>');">
-                                    <i class="iconm fa fa-home"></i>
+                                <a href="javascript:_MP('3','<?php echo site_url($vv['url']); ?>');">
+                                    <i class="iconm fa fa-<?= $vv['ico']; ?>"></i>
                                     <span class="title"><?php echo $vv['name']; ?></span>
                                 </a>
                             </li>
