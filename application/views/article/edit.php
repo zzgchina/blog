@@ -80,13 +80,23 @@
 
             </div>
         </div>
+        <script src="<?php echo base_url('resouse/admin/view/js/wangEditor.min.js'); ?>"></script>
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">内容</label>
             <div class="uk-form-controls">
-                <textarea name="descript" style="width: 500px;height: 100px;"><?=  isset($descript)?$descript:''; ?></textarea>
-                <?php echo form_error('url'); ?>
+<!--                <textarea name="descript" id="editor" style="width: 500px;height: 100px;">--><?//=  isset($descript)?$descript:''; ?><!--</textarea>-->
+                    <!--                --><?php //echo form_error('url'); ?>
+                <div id="editor">
+                </div>
             </div>
         </div>
+        <script type="text/javascript">
+            var E = window.wangEditor;
+            var editor = new E('#editor');
+            // 或者 var editor = new E( document.getElementById('editor') )
+            editor.create();
+            editor.txt.html('<p onclick="alert(33)">用 JS 设置的内容</p>')
+        </script>
         <br>
         <!-- token令牌 -->
         <input type="hidden" name="<?php echo $csrf['name']; ?>" value="<?php echo $csrf['hash']; ?>" />

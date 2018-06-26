@@ -68,18 +68,18 @@ class Article extends MY_controller
         $this->form_validation->set_rules('name','名称','required|max_length[15]');
         if($this->form_validation->run() === FALSE)
         {
-            $this->load->view('column/edit',$data);
+            $this->load->view('article/edit',$data);
         }
         else{
             $data = $this->input->post();
             $res = $this->column_model->add($data);
             if($res['status'])
             {
-                $this->load->view('errors/self/success',array('url'=>'column/index','time'=>5,'msg'=>$res['msg']));
+                $this->load->view('errors/self/success',array('url'=>'article/index','time'=>5,'msg'=>$res['msg']));
             }
             else
             {
-                $this->load->view('errors/self/error',array('url'=>'column/edit','time'=>5,'msg'=>$res['msg']));
+                $this->load->view('errors/self/error',array('url'=>'article/edit','time'=>5,'msg'=>$res['msg']));
             }
         }
 
