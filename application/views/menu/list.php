@@ -38,7 +38,7 @@
                     <tr>
                         <td><input type="checkbox" name="checkbox[]" value="<?php echo $list['id']; ?>"></td>
                         <td class="uk-hidden-small"><?php echo $list['id']; ?></td>
-                        <td><?php echo mb_strlen($list['name']) > 20 ? mb_substr($list['name'],0,20).'...' : $list['name']; ?></td>
+                        <td><?php echo $list['delment'].$list['name']; ?></td>
                         <td class="uk-hidden-small"><i class="fa fa-<?php echo $list['ico']; ?> fa-lg"></i> </td>
                         <td><?php echo date('Y-m-d H:i:s', $list['addtime']); ?></td>
 
@@ -72,8 +72,6 @@
             </table>
             <!-- 分页 -->
             <div>
-                <?php echo $page_links; ?>
-
             </div><!-- 分页 end -->
             <!-- token令牌 -->
             <!-- 批量操作控件 -->

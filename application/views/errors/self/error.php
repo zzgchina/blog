@@ -9,7 +9,7 @@
         intervalid = setInterval("fun()", 1000);
         function fun() {
             if (i === 0) {
-                window.location.href = "";
+                window.location.href = "<?= isset($url)?site_url($url):''; ?>";
                 clearInterval(intervalid);
             }
             document.getElementById("mes").innerHTML = i;
@@ -32,6 +32,7 @@
                         <p>2.链接过了保质期。</p>
                     </div>
                     <div class="oper">
+                        <p><a href="<?= isset($url)?site_url($url):''; ?>">点击</a></p>
                         <p><a href="javascript:history.go(-1);">返回上一级页面&gt;</a></p>
                         <p>将在 <span id="mes"><?php echo $time; ?></span> 秒钟后返回！</p>
                     </div>

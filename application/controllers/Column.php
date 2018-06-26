@@ -12,53 +12,20 @@ class Column extends MY_controller
     {
         parent::__construct();
 
-        $this->load->model('column');
+        $this->load->model('column_model');
         $this->output->enable_profiler(FALSE);
     }
 
-    /**
-     * 编辑
-     * @param string $id
-     */
-    public function edit($id = '')
-    {
-        $data = array();
-        if($id !== ''){
-            $data =  array_reduce(html_escape($this->menuq->get($id,' id,name,ico,addtime,url,token ')),'array_merge',$data);
-        }
-        $data['csrf'] = array('name'=>$this->security->get_csrf_token_name(),'hash'=>$this->security->get_csrf_hash());
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('name','名称','required|max_length[15]');
-        $this->form_validation->set_rules('pid','父ID','required');
-        $this->form_validation->set_rules('url','路径','required');
-        if($this->form_validation->run() === FALSE)
-        {
-            $data['menu'] = html_escape($this->menuq->get('',' name ,id ',' where pid=0 '));
-            $this->load->view('menu/edit',$data);
-        }
-        else{
-            $data = $this->input->post();
-            $res = $this->menuq->add($data);
-            if($res['status'])
-            {
-                echo $res['msg'];
-            }
-        }
 
-    }
-
-    /**
-     * 获取菜单list
-     * @param int $id 分页
-     */
-    public function get_list($id=0)
+    //列表
+    public function index($id=0)
     {
-        $num = 2;//每页个数
-        $data['list']  = $this->menuq->get('',$this->menuq->table.'.* ,a.name pname',' left join '.$this->menuq->table.' as a on '.$this->menuq->table.'.pid=a.id order by id limit '.$id.','.$num);
+        $num = 10;//每页个数
+        $data['list']  = $this->column_model->get('','*',' where 1=1');
         $this->load->library('pagination');
-        $page_config['base_url'] =site_url('menu/get_list');
-        $page_config['first_url']       = site_url('menu/get_list');
-        $page_config['total_rows'] = $this->db->count_all('menu');
+        $page_config['base_url'] =site_url('column/index');
+        $page_config['first_url']       = site_url('column/index');
+        $page_config['total_rows'] = $this->db->count_all('column');
         $page_config['per_page'] = $num;
         $page_config['num_links'] =1;
         $page_config['first_link']      = '首页';
@@ -82,8 +49,43 @@ class Column extends MY_controller
         $this->pagination->initialize($page_config);
         $data['page_links'] =$this->pagination->create_links();
 
-        $this->load->view('menu/list',$data);
+        $this->load->view('column/list',$data);
     }
+
+    /**
+     * 编辑
+     * @param string $id
+     */
+    public function edit($id = '')
+    {
+        $data = array();
+        if($id !== ''){
+//           array_reduce 二维转化一维数组
+            $data =  array_reduce(html_escape($this->column_model->get($id,' id,name,status,token,descript ')),'array_merge',$data);
+        }
+
+        $data['csrf'] = array('name'=>$this->security->get_csrf_token_name(),'hash'=>$this->security->get_csrf_hash());
+        $this->form_validation->set_rules('name','名称','required|max_length[15]');
+        if($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('column/edit',$data);
+        }
+        else{
+            $data = $this->input->post();
+            $res = $this->column_model->add($data);
+            if($res['status'])
+            {
+                $this->load->view('errors/self/success',array('url'=>'column/index','time'=>5,'msg'=>$res['msg']));
+            }
+            else
+            {
+                $this->load->view('errors/self/error',array('url'=>'column/edit','time'=>5,'msg'=>$res['msg']));
+            }
+        }
+
+    }
+
+
     /**
      * 删除
      */
@@ -92,7 +94,7 @@ class Column extends MY_controller
         $arges = func_get_args();
         $data['id'] = $arges[0];
         $data['token'] = $arges[1];
-        $res = $this->menuq->del($data);
-        redirect('menu/get_list');
+        $res = $this->column->del($data);
+        redirect('column/index');
     }
 }

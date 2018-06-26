@@ -43,7 +43,7 @@
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">路由</label>
             <div class="uk-form-controls">
-                <input class="uk-form-large" type="text" id="ICP" name="url" placeholder="菜单路径" maxlength="30" value="<?php echo isset($url)?:''; ?>" >
+                <input class="uk-form-large" type="text" id="ICP" name="url" placeholder="菜单路径" maxlength="30" value="<?php echo isset($url)?$url:''; ?>" >
                 <span>菜单路径</span>
                 <?php echo form_error('url'); ?>
             </div>

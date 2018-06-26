@@ -13,7 +13,7 @@
         <!-- 条件搜索 -->
         <div class="uk-align-left">
             <form id="cate_search" class="uk-form uk-margin">
-                <?php echo anchor('menu/edit','添加',array('class'=>'uk-button')); ?>
+                <?php echo anchor('column/edit','添加',array('class'=>'uk-button')); ?>
                 <a href="javascript:window.location.reload();" class="uk-button">刷新</a>
             </form>
         </div>
@@ -25,7 +25,7 @@
                     <th><input id="p_check" type="checkbox" name="check_all"></th>
                     <th class="uk-hidden-small">ID</th>
                     <th>名称</th>
-                    <th class="uk-hidden-small">图标</th>
+                    <th class="uk-hidden-small">状态</th>
                     <th>发布日期</th>
                     <th>操作</th>
                 </tr>
@@ -39,15 +39,14 @@
                         <td><input type="checkbox" name="checkbox[]" value="<?php echo $list['id']; ?>"></td>
                         <td class="uk-hidden-small"><?php echo $list['id']; ?></td>
                         <td><?php echo mb_strlen($list['name']) > 20 ? mb_substr($list['name'],0,20).'...' : $list['name']; ?></td>
-                        <td class="uk-hidden-small"><i class="fa fa-<?php echo $list['ico']; ?> fa-lg"></i> </td>
-                        <td><?php echo date('Y-m-d H:i:s', $list['addtime']); ?></td>
-
+                        <td class="uk-hidden-small"><?php echo $list['status']?'允许':'禁止'; ?> </td>
+                        <td><?php echo date('Y-m-d H:i:s', $list['adddate']); ?></td>
                         <td>
                             <!-- 正常分辨率 -->
                             <div class="uk-button-group uk-hidden-small">
-                                <?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i>View',array('class'=>'uk-button')); ?>
-                                <?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i>Edit',array('class'=>'uk-button')); ?>
-                                <?php echo anchor('menu/del/'.$list['id'].'/'.$list['token'],'<i class="uk-icon uk-icon-trash"></i>Delete',array('class'=>'uk-button del')); ?>
+                                <?php echo anchor('column/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i>View',array('class'=>'uk-button')); ?>
+                                <?php echo anchor('column/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i>Edit',array('class'=>'uk-button')); ?>
+                                <?php echo anchor('column/del/'.$list['id'].'/'.$list['token'],'<i class="uk-icon uk-icon-trash"></i>Delete',array('class'=>'uk-button del')); ?>
 <!--                                <a href="javascript:del(--><?//=$list['id']?><!--,'--><?//=$list['token']?><!--')" class="uk-button del"><i class="uk-icon uk-icon-trash"></i>Delete</a>-->
                             </div><!-- 正常分辨率 end -->
                             <!-- 小分辨率 -->

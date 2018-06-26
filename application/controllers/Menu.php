@@ -29,7 +29,7 @@ class Menu extends MY_controller
     {
         $data = array();
         if($id !== ''){
-            $data =  array_reduce(html_escape($this->menuq->get($id,' id,name,ico,addtime,url,token ')),'array_merge',$data);
+            $data =  array_reduce(html_escape($this->menuq->get($id,' id,name,ico,addtime,url,token,pid ')),'array_merge',$data);
         }
         $data['csrf'] = array('name'=>$this->security->get_csrf_token_name(),'hash'=>$this->security->get_csrf_hash());
         $this->load->library('form_validation');
@@ -61,35 +61,8 @@ class Menu extends MY_controller
      */
     public function get_list($id=0)
     {
-        $num = 2;//每页个数
-        $data['list']  = $this->menuq->get('',$this->menuq->table.'.* ,a.name pname',' left join '.$this->menuq->table.' as a on '.$this->menuq->table.'.pid=a.id order by id limit '.$id.','.$num);
-        $this->load->library('pagination');
-        $page_config['base_url'] =site_url('menu/get_list');
-        $page_config['first_url']       = site_url('menu/get_list');
-        $page_config['total_rows'] = $this->db->count_all('menu');
-        $page_config['per_page'] = $num;
-        $page_config['num_links'] =1;
-        $page_config['first_link']      = '首页';
-        $page_config['last_link']       = '末页';//首页，末页出现和num_links,有关
-        $page_config['next_link']       = '<i class="uk-icon-angle-double-right"></i>';
-        $page_config['prev_link']       = '<i class="uk-icon-angle-double-left"></i>';
-        $page_config['full_tag_open']   = '<ul class="uk-pagination">';
-        $page_config['full_tag_close']  = '</ul>';
-        $page_config['first_tag_open']  = '<li>';
-        $page_config['first_tag_close'] = '</li> ';
-        $page_config['last_tag_open']   = ' <li>';
-        $page_config['last_tag_close']  = '</li>';
-        $page_config['next_tag_open']   = ' <li>';
-        $page_config['next_tag_close']  = '</li> ';
-        $page_config['prev_tag_open']   = ' <li>';
-        $page_config['prev_tag_close']  = '</li> ';
-        $page_config['num_tag_open']    = '<li>';
-        $page_config['num_tag_close']   = '</li>';
-        $page_config['cur_tag_open']    = '<li class="uk-active"><span>';
-        $page_config['cur_tag_close']   = '</span></li>';
-        $this->pagination->initialize($page_config);
-        $data['page_links'] =$this->pagination->create_links();
-
+        $data['list']  = $this->menuq->get('',$this->menuq->table.'.* ,a.name pname',' left join '.$this->menuq->table.' as a on '.$this->menuq->table.'.pid=a.id ');
+        $data['list']  = get_son1($data['list']);
         $this->load->view('menu/list',$data);
     }
     /**

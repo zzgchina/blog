@@ -9,10 +9,10 @@
     <title><?php echo $title; ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link href="./resouse/statics/admin/css/font-awesome/css/font-awesome.css"rel="stylesheet" type="text/css" />
    <link href="./resouse/statics/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
    <link href="./resouse/statics/admin/my.css" rel="stylesheet" type="text/css" />
     <link href="./resouse/statics/admin/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
    <script src="./resouse/statics/js/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
 
@@ -155,14 +155,8 @@
 
             $("#rightMain").attr('src', url);
             $("#rightMain").attr("url", url);
-
-            var fid = $("#_MP_"+id).attr("fid");
-
-            $(".dr_left").attr('class', 'dr_left nav-item');
             $(".dr_link").attr('class', 'dr_link nav-item');
             $("#_MP_"+id).addClass('active open');
-            $("#D_M_"+fid).addClass('active open');
-
             if (url.indexOf('http') == -1) {
                 dr_loading();
             }
@@ -189,7 +183,7 @@
             });
         }
         function logout(){
-            if (confirm("{fc_lang('您确定要退出吗？')}"))
+            if (confirm("您确定要退出吗?"))
                 top.location = '<?php echo site_url('login/loginout'); ?>';
             return false;
         }
@@ -242,7 +236,7 @@
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <div class="page-logo">
-            <a href="" title="" target="_blank" style="    font-size: 16px; padding-top: 24px;">POSCMS免费版 </a>
+            <a href="" title="" target="_blank" style="    font-size: 16px; padding-top: 24px;">分众传媒 </a>
         </div>
 
         <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
@@ -313,37 +307,37 @@
                             <span class="arrow open"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li tid="1" fid="2" id="_MP_3" class="dr_link nav-item active open">
-                                <a href="javascript:_MP('3','<?php echo site_url('menu/get_list'); ?>');">
+                            <li  id="_MP_o1" class="dr_link nav-item ">
+                                <a href="javascript:_MP('o1','<?php echo site_url('menu/get_list'); ?>');">
                                     <i class="iconm fa fa-home"></i>
                                     <span class="title">配置菜单</span>
                                 </a>
                             </li>
-                            <li tid="1" fid="2" id="_MP_4" class="dr_link nav-item">
-                                <a href="javascript:_MP('4', 'index.php');">
+                            <li  id="_MP_o2" class="dr_link nav-item">
+                                <a href="javascript:_MP('o2', 'index.php');">
                                     <i class="iconm fa fa-user"></i>
                                     <span class="title">资料修改</span>
                                 </a>
                             </li>
-                            <li tid="1" fid="2" id="_MP_5" class="dr_link nav-item">
-                                <a href="javascript:_MP('5', 'admin.php?c=root&amp;m=log');">
+                            <li   id="_MP_o3" class="dr_link nav-item">
+                                <a href="javascript:_MP('o3', '<?php echo site_url('article/get_list'); ?>');">
                                     <i class="iconm fa fa-calendar-check-o"></i>
-                                    <span class="title">登录日志</span>
+                                    <span class="title">添加文章</span>
                                 </a>
                             </li>
                 </ul>
                     </li>
                     <?php foreach ($column as $v){?>
-                    <li id="D_M_2" class="dr_left nav-item active open ">
+                    <li id="D_M_2" class="dr_left nav-item active  ">
                         <a href="javascript:;" class="nav-link nav-toggle hided">
                             <i class="fa fa-<?= $v['ico']; ?>"></i>
                             <span class="title"><?= $v['name']; ?></span>
                             <span class="arrow open"></span>
                         </a>
-                        <ul class="sub-menu">
+                        <ul class="sub-menu" style="display: none">
                             <?php foreach ($v['son'] as $vv){?>
-                            <li tid="1" fid="2" id="_MP_3" class="dr_link nav-item active open">
-                                <a href="javascript:_MP('3','<?php echo site_url($vv['url']); ?>');">
+                            <li tid="1" id="_MP_<?= $vv['id']; ?>" class="dr_link nav-item  ">
+                                <a href="javascript:_MP('<?= $vv['id']; ?>','<?php echo site_url($vv['url']); ?>');">
                                     <i class="iconm fa fa-<?= $vv['ico']; ?>"></i>
                                     <span class="title"><?php echo $vv['name']; ?></span>
                                 </a>

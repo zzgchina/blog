@@ -47,7 +47,7 @@
 
             </div>
         </div>
-        <P>Diyhe.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎您定制盒子模型</P>
+        <P>http://www.zzgblog.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
     </div>
 
 </div>
