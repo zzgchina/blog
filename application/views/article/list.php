@@ -13,7 +13,7 @@
         <!-- 条件搜索 -->
         <div class="uk-align-left">
             <form id="cate_search" class="uk-form uk-margin">
-                <?php echo anchor('column/edit','添加',array('class'=>'uk-button')); ?>
+                <?php echo anchor('article/edit','添加',array('class'=>'uk-button')); ?>
                 <a href="javascript:window.location.reload();" class="uk-button">刷新</a>
             </form>
         </div>
