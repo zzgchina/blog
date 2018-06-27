@@ -63,4 +63,29 @@ class MY_controller extends CI_Controller
         $data['url'] = $url;
         return  $this->load->view('errors/self/success',$data);
     }
+
+    /**
+     * 图片上传
+     */
+    public function do_upload()
+    {
+        $config['upload_path']      = './upload/img/'.date('Ymd').'/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']     = 10000;
+        $config['max_width']        = 2400;
+        $config['max_height']       = 2400;
+        $config['file_name']       = time();
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+          echo json_encode(array('error'=>1,'msg'=>$this->upload->display_errors()));
+        }
+        else
+        {
+            echo json_encode(array('errno'=>0,'url'=>'//'.$_SERVER['SERVER_NAME'].$this->upload->data('full_path')));
+//            echo '{}';
+        }
+    }
 }

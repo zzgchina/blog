@@ -12,7 +12,8 @@ class Article extends MY_controller
     {
         parent::__construct();
 
-        $this->load->model('Article_model');
+        $this->load->model('article_model');
+        $this->load->model('column_model');
         $this->output->enable_profiler(FALSE);
     }
 
@@ -21,7 +22,7 @@ class Article extends MY_controller
     public function index($id=0)
     {
         $num = 10;//每页个数
-        $data['list']  = $this->Article_model->get('','*',' where 1=1');
+        $data['list']  = $this->article_model->get('','*',' where 1=1');
         $this->load->library('pagination');
         $page_config['base_url'] =site_url('article/index');
         $page_config['first_url']       = site_url('article/index');
@@ -68,10 +69,14 @@ class Article extends MY_controller
         $this->form_validation->set_rules('name','名称','required|max_length[15]');
         if($this->form_validation->run() === FALSE)
         {
+
+            $data['menu'] = html_escape($this->column_model->get('',' name ,id ',' where 1=1 '));
+
             $this->load->view('article/edit',$data);
         }
         else{
             $data = $this->input->post();
+            var_dump($data);die;
             $res = $this->column_model->add($data);
             if($res['status'])
             {

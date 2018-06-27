@@ -43,8 +43,8 @@
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">文章来源</label>
             <div class="uk-form-controls">
-                <input type="radio" name="status" value="1" checked>原创
-                <input type="radio" name="status" value="0">转载
+                <input type="radio" name="way" value="1" checked="checked">原创
+                <input type="radio" name="way" value="0">转载
 
             </div>
         </div>
@@ -59,16 +59,16 @@
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">文章属性</label>
             <div class="uk-form-controls">
-                <input type="radio" name="status" value="1" checked>私密
-                <input type="radio" name="status" value="0">公开
+                <input type="radio" name="private" value="1" checked>私密
+                <input type="radio" name="private" value="0">公开
 
             </div>
         </div>
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">是否评论</label>
             <div class="uk-form-controls">
-                <input type="radio" name="status" value="1" checked>允许
-                <input type="radio" name="status" value="0">禁止
+                <input type="radio" name="talk" value="1" checked>允许
+                <input type="radio" name="talk" value="0">禁止
 
             </div>
         </div>
@@ -84,18 +84,72 @@
         <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">内容</label>
             <div class="uk-form-controls">
-<!--                <textarea name="descript" id="editor" style="width: 500px;height: 100px;">--><?//=  isset($descript)?$descript:''; ?><!--</textarea>-->
-                    <!--                --><?php //echo form_error('url'); ?>
+                <textarea name="descript" id="text1" style="display: none"></textarea>
                 <div id="editor">
                 </div>
             </div>
         </div>
         <script type="text/javascript">
             var E = window.wangEditor;
+            var $text1 = $('#text1')
             var editor = new E('#editor');
             // 或者 var editor = new E( document.getElementById('editor') )
+            editor.customConfig.uploadImgServer = '<?php echo site_url('article/do_upload'); ?>';
+            editor.customConfig.uploadFileName = 'userfile';
+
+            editor.customConfig.uploadImgHooks = {
+                before: function (xhr, editor, files) {
+                    // 图片上传之前触发
+                    // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
+
+                    // 如果返回的结果是 {prevent: true, msg: 'xxxx'} 则表示用户放弃上传
+                    // return {
+                    //     prevent: true,
+                    //     msg: '放弃上传'
+                    // }
+
+                },
+                success: function (xhr, editor, result) {
+                    // 图片上传并返回结果，图片插入成功之后触发
+                    // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+                    console.log(result);
+                },
+                fail: function (xhr, editor, result) {
+                    // 图片上传并返回结果，但图片插入错误时触发
+                    // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+                    console.log(result)
+                },
+                error: function (xhr, editor) {
+                    // 图片上传出错时触发
+                    // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+                    console.log(xhr)
+                    console.log(editor)
+                },
+                timeout: function (xhr, editor) {
+                    // 图片上传超时时触发
+                    // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+                },
+
+                // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+                // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
+                customInsert: function (insertImg, result, editor) {
+                    // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+                    // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+
+                    // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
+                    var url = result.url
+                    insertImg(url)
+
+                    // result 必须是一个 JSON 格式字符串！！！否则报错
+                }
+            };
+            editor.customConfig.onchange = function (html) {
+                // 监控变化，同步更新到 textarea
+                console.log(html)
+                $text1.val(html)
+            }
             editor.create();
-            editor.txt.html('<p onclick="alert(33)">用 JS 设置的内容</p>')
+            $text1.val(editor.txt.html())
         </script>
         <br>
         <!-- token令牌 -->

@@ -994,15 +994,16 @@ class CI_Upload {
 			return FALSE;
 		}
 
-		if (realpath($this->upload_path) !== FALSE)
-		{
-			$this->upload_path = str_replace('\\', '/', realpath($this->upload_path));
-		}
+//		if (realpath($this->upload_path) !== FALSE)
+//		{
+//			$this->upload_path = str_replace('\\', '/', realpath($this->upload_path));
+//		}
 
 		if ( ! is_dir($this->upload_path))
 		{
-			$this->set_error('upload_no_filepath', 'error');
-			return FALSE;
+//			$this->set_error('upload_no_filepath', 'error');
+//			return FALSE;
+            mkdir($this->upload_path, 0777, true);
 		}
 
 		if ( ! is_really_writable($this->upload_path))
@@ -1012,6 +1013,7 @@ class CI_Upload {
 		}
 
 		$this->upload_path = preg_replace('/(.+?)\/*$/', '\\1/',  $this->upload_path);
+
 		return TRUE;
 	}
 
