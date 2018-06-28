@@ -22,7 +22,8 @@ class Article extends MY_controller
     public function index($id=0)
     {
         $num = 10;//每页个数
-        $data['list']  = $this->article_model->get('','*',' where 1=1');
+        $sql = 'left join '.$this->column_model->table.' as b on a.sort=b.id';
+        $data['list']  = $this->article_model->get('',' a.*,b.name sort_name',$sql);
         $this->load->library('pagination');
         $page_config['base_url'] =site_url('article/index');
         $page_config['first_url']       = site_url('article/index');
@@ -49,7 +50,6 @@ class Article extends MY_controller
         $page_config['cur_tag_close']   = '</span></li>';
         $this->pagination->initialize($page_config);
         $data['page_links'] =$this->pagination->create_links();
-
         $this->load->view('article/list',$data);
     }
 
@@ -62,22 +62,34 @@ class Article extends MY_controller
         $data = array();
         if($id !== ''){
 //           array_reduce 二维转化一维数组
-            $data =  array_reduce(html_escape($this->column_model->get($id,' id,name,status,token,descript ')),'array_merge',$data);
+//            $data =  array_reduce(html_escape($this->article_model->get($id,'*')),'array_merge',$data);
+            $data =  array_reduce($this->article_model->get($id,'*'),'array_merge',$data);
         }
 
         $data['csrf'] = array('name'=>$this->security->get_csrf_token_name(),'hash'=>$this->security->get_csrf_hash());
         $this->form_validation->set_rules('name','名称','required|max_length[15]');
+        $this->form_validation->set_rules('author','名称','required|max_length[15]');
         if($this->form_validation->run() === FALSE)
         {
-
-            $data['menu'] = html_escape($this->column_model->get('',' name ,id ',' where 1=1 '));
-
+            $data['menu'] = $this->column_model->get('',' name ,id ',' where 1=1 ');
             $this->load->view('article/edit',$data);
         }
         else{
             $data = $this->input->post();
-            var_dump($data);die;
-            $res = $this->column_model->add($data);
+            $msg = array(
+                'name'=>$data['name'],
+                'author'=>$data['author'],
+                'adddate'=>time(),
+                'content'=>$data['descript'],
+                'token'=>md5(time()),
+                'sort'=>$data['pid'],
+                'way'=>$data['way'],
+                'private'=>$data['private'],
+                'talk'=>$data['talk'],
+                'url'=>$data['url']?:'原创',
+            );
+            $msg = html_escape($msg);
+            $res = $this->article_model->add($data,$msg);
             if($res['status'])
             {
                 $this->load->view('errors/self/success',array('url'=>'article/index','time'=>5,'msg'=>$res['msg']));

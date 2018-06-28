@@ -65,7 +65,7 @@ class MY_model extends CI_Model
             $data = array($id);
         }
 
-        $query = $this->db->query('select '.$field.' from '.$this->table.$where,$data);
+        $query = $this->db->query('select '.$field.' from '.$this->table.' as a '.$where,$data);
         return $query->result_array();
     }
 

@@ -25,8 +25,11 @@
                     <th><input id="p_check" type="checkbox" name="check_all"></th>
                     <th class="uk-hidden-small">ID</th>
                     <th>名称</th>
-                    <th class="uk-hidden-small">状态</th>
-                    <th>发布日期</th>
+                    <th>作者</th>
+                    <th>来源</th>
+                    <th>所属分类</th>
+                    <th>点击率</th>
+                     <th>发布日期</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -38,15 +41,18 @@
                     <tr>
                         <td><input type="checkbox" name="checkbox[]" value="<?php echo $list['id']; ?>"></td>
                         <td class="uk-hidden-small"><?php echo $list['id']; ?></td>
-                        <td><?php echo mb_strlen($list['name']) > 20 ? mb_substr($list['name'],0,20).'...' : $list['name']; ?></td>
-                        <td class="uk-hidden-small"><?php echo $list['status']?'允许':'禁止'; ?> </td>
+                        <td><?php echo  $list['name']; ?></td>
+                        <td><?php echo  $list['author']; ?></td>
+                        <td><?php echo  $list['way']==1?'原创':'转载/'.$list['url']; ?></td>
+                        <td><?php echo  $list['sort_name']; ?></td>
+                        <td><?php echo  $list['hot']; ?></td>
                         <td><?php echo date('Y-m-d H:i:s', $list['adddate']); ?></td>
                         <td>
                             <!-- 正常分辨率 -->
                             <div class="uk-button-group uk-hidden-small">
-                                <?php echo anchor('column/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i>View',array('class'=>'uk-button')); ?>
-                                <?php echo anchor('column/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i>Edit',array('class'=>'uk-button')); ?>
-                                <?php echo anchor('column/del/'.$list['id'].'/'.$list['token'],'<i class="uk-icon uk-icon-trash"></i>Delete',array('class'=>'uk-button del')); ?>
+                                <?php echo anchor('article/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i>View',array('class'=>'uk-button')); ?>
+                                <?php echo anchor('article/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i>Edit',array('class'=>'uk-button')); ?>
+                                <?php echo anchor('article/del/'.$list['id'].'/'.$list['token'],'<i class="uk-icon uk-icon-trash"></i>Delete',array('class'=>'uk-button del')); ?>
 <!--                                <a href="javascript:del(--><?//=$list['id']?><!--,'--><?//=$list['token']?><!--')" class="uk-button del"><i class="uk-icon uk-icon-trash"></i>Delete</a>-->
                             </div><!-- 正常分辨率 end -->
                             <!-- 小分辨率 -->
@@ -55,10 +61,10 @@
                                     <button class="uk-button uk-button-small"><i class="uk-icon-caret-down"></i></button>
                                     <div class="uk-dropdown uk-dropdown-small">
                                         <ul class="uk-nav uk-nav-dropdown">
-                                            <li><?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i> View'); ?></li>
-                                            <li><?php echo anchor('menu/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i> Edit'); ?></li>
+                                            <li><?php echo anchor('article/edit/'.$list['id'],'<i class="uk-icon uk-icon-eye"></i> View'); ?></li>
+                                            <li><?php echo anchor('article/edit/'.$list['id'],'<i class="uk-icon uk-icon-edit"></i> Edit'); ?></li>
                                             <li class="uk-nav-divider"></li>
-                                            <li><?php echo anchor('Article/delete/'.$list['id'],'<i class="uk-icon uk-icon-trash"></i> Delete',array('class'=>'del')); ?></li>
+                                            <li><?php echo anchor('article/delete/'.$list['id'],'<i class="uk-icon uk-icon-trash"></i> Delete',array('class'=>'del')); ?></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -112,18 +112,17 @@
                 success: function (xhr, editor, result) {
                     // 图片上传并返回结果，图片插入成功之后触发
                     // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-                    console.log(result);
+
                 },
                 fail: function (xhr, editor, result) {
                     // 图片上传并返回结果，但图片插入错误时触发
                     // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-                    console.log(result)
+
                 },
                 error: function (xhr, editor) {
                     // 图片上传出错时触发
                     // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
-                    console.log(xhr)
-                    console.log(editor)
+
                 },
                 timeout: function (xhr, editor) {
                     // 图片上传超时时触发
@@ -145,11 +144,12 @@
             };
             editor.customConfig.onchange = function (html) {
                 // 监控变化，同步更新到 textarea
-                console.log(html)
                 $text1.val(html)
             }
             editor.create();
+            editor.txt.html('<?php echo  isset($content)?htmlspecialchars_decode($content):''; ?>')
             $text1.val(editor.txt.html())
+
         </script>
         <br>
         <!-- token令牌 -->
