@@ -97,7 +97,7 @@
                     <h3 class="uk-panel-title"><i class="uk-icon uk-icon-cog"></i><span class="uk-text-primary uk-text-bold"> 系统管理</span></h3>
                     <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav>
                         <li class="uk-nav-divider"></li>
-                        <li><?php echo anchor('Webinfo/index','<i class="uk-icon uk-icon-home"></i> 网站信息'); ?></li>
+                        <li><?php echo anchor('Webinfo/index','<i class="uk-icon uk-icon-rome"></i> 网站信息'); ?></li>
                         <li><?php echo anchor('Friendlink/index','<i class="uk-icon uk-icon-link"></i> 友情链接'); ?></li>
                         <li class="uk-parent">
                             <a href="#"><i class="uk-icon uk-icon-user"></i> 管理员</a>
