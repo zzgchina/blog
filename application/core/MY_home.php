@@ -6,7 +6,7 @@
  * Time: 13:39
  */
 
-class CI_dd extends CI_Controller
+class MY_home extends CI_Controller
 {
     public $nav_data;
     public function __construct()
@@ -20,7 +20,13 @@ class CI_dd extends CI_Controller
 
     public function nav()
     {
-        var_dump($this->nav_model->get('','','where 1=1 '));die;
+       $data = $this->nav_model->get('','name,id','where 1=1 ');
+
+       foreach ($data as $k=>$nav)
+       {
+           $data[$k]['son'] = $this->column_model->get('','name,id',' where pid='.$nav['id']);
+       }
+       return $data;
     }
 
 

@@ -6,11 +6,16 @@
  * Time: 17:30
  */
 
-class Home extends CI_Controller
+class Home extends MY_home
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function index()
     {
-
-        $this->load->view('home/home');
+       $data['nav']=$this->nav_data;
+        $this->load->view('home/home',$data);
     }
 }

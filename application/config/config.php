@@ -531,3 +531,7 @@ $config['time_zone']=date_default_timezone_set('Asia/shanghai');
 $config['web_name'] = 'zzg的博客';
 $config['view_resource'] = FCPATH.'resouse'.DIRECTORY_SEPARATOR;
 $config['upload_resource'] = FCPATH.'upload'.DIRECTORY_SEPARATOR;
+/**
+ * 配置自己的继承类
+ */
+$config['class'] =array('home');

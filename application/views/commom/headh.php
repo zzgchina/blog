@@ -16,3 +16,22 @@
     <![endif]-->
 </head>
 <body>
+<header>
+    <!--menu begin-->
+    <div class="menu">
+        <nav class="nav" id="topnav">
+            <h1 class="logo"><a href="http://www.yangqq.com">xxxx</a></h1>
+            <?php foreach ($nav as $v):?>
+                <li><a href="<?=$v['id']?>"><?=$v['name']?></a>
+                <?php if(!empty($v['son'])) :?>
+                    <ul class="sub-nav">
+                        <?php foreach ($v['son'] as $vv):?>
+                            <li><a href="<?=$vv['id']?>"><?=$vv['name']?></a></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif; ?>
+                </li>
+            <?php endforeach;?>
+        </nav>
+    </div>
+</header>
