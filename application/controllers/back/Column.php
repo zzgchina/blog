@@ -13,6 +13,7 @@ class Column extends MY_controller
         parent::__construct();
 
         $this->load->model('column_model');
+        $this->load->model('nav_model');
         $this->output->enable_profiler(FALSE);
     }
 
@@ -21,7 +22,7 @@ class Column extends MY_controller
     public function index($id=0)
     {
         $num = 10;//每页个数
-        $data['list']  = $this->column_model->get('','*',' where 1=1');
+        $data['list']  = $this->column_model->get('',$this->column_model->table.'.* ,a.name pname',' left join '.$this->nav_model->table.' as a on '.$this->column_model->table.'.pid=a.id ');
         $this->load->library('pagination');
         $page_config['base_url'] =site_url('column/index');
         $page_config['first_url']       = site_url('column/index');
@@ -68,6 +69,7 @@ class Column extends MY_controller
         $this->form_validation->set_rules('name','名称','required|max_length[15]');
         if($this->form_validation->run() === FALSE)
         {
+            $data['menu'] = html_escape($this->nav_model->get('',' name ,id ',' where 1=1 '));
             $this->load->view('admin/column/edit',$data);
         }
         else{

@@ -249,8 +249,6 @@
                         <i class="fa fa-home" style="font-size: 21px;"></i>
                     </a>
                 </li>
-
-
                 <li class="dropdown dropdown-dark">
                     <a class="dropdown-toggle popovers top-link" data-container="body" data-trigger="hover" data-placement="bottom" data-content="" href="" target="right"><i class="icon-refresh"></i></a>
                 </li>
@@ -279,25 +277,24 @@
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
             <div class="page-sidebar navbar-collapse collapse">
-                <div class="sidebar-search-wrapper">
-                    <form style="margin:10px 18px;" class="sidebar-search" action="http://www.poscms.net/index.php" method="get" target="_blank">
-                        <input name="s" type="hidden" value="help">
-                        <input name="c" type="hidden" value="search" />
-                        <input name="m" type="hidden" value="index" />
-                        <a href="javascript:;" class="remove">
-                            <i class="icon-close"></i>
-                        </a>
-                        <div class="input-group" style="border-radius:0">
-                            <input type="text" style="border-radius:0" class="form-control" name="keyword" placeholder="{fc_lang('搜索帮助...')}">
-                            <span class="input-group-btn">
-                                <a href="javascript:;" class="btn submit">
-                                    <i class="icon-magnifier"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-
+<!--                <div class="sidebar-search-wrapper">-->
+<!--                    <form style="margin:10px 18px;" class="sidebar-search" action="http://www.poscms.net/index.php" method="get" target="_blank">-->
+<!--                        <input name="s" type="hidden" value="help">-->
+<!--                        <input name="c" type="hidden" value="search" />-->
+<!--                        <input name="m" type="hidden" value="index" />-->
+<!--                        <a href="javascript:;" class="remove">-->
+<!--                            <i class="icon-close"></i>-->
+<!--                        </a>-->
+<!--                        <div class="input-group" style="border-radius:0">-->
+<!--                            <input type="text" style="border-radius:0" class="form-control" name="keyword" placeholder="{fc_lang('搜索帮助...')}">-->
+<!--                            <span class="input-group-btn">-->
+<!--                                <a href="javascript:;" class="btn submit">-->
+<!--                                    <i class="icon-magnifier"></i>-->
+<!--                                </a>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
                 <ul class="page-sidebar-menu page-sidebar-menu-fixed page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top:0px">
 
                     <li id="D_M_2" class="dr_left nav-item active open ">
@@ -323,6 +320,12 @@
                                 <a href="javascript:_MP('o3', '<?php echo site_url('article/get_list'); ?>');">
                                     <i class="iconm fa fa-calendar-check-o"></i>
                                     <span class="title">添加文章</span>
+                                </a>
+                            </li>
+                            <li  id="_MP_o4" class="dr_link nav-item ">
+                                <a href="javascript:_MP('o4','<?php echo site_url('nav/get_list'); ?>');">
+                                    <i class="iconm fa fa-home"></i>
+                                    <span class="title">配置导航</span>
                                 </a>
                             </li>
                 </ul>

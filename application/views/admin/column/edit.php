@@ -23,6 +23,16 @@
             </div>
         </div>
         <div class="uk-form-row">
+            <label class="uk-form-label uk-text-bold uk-text-primary" for="is_record">所属板块</label>
+            <div class="uk-form-controls">
+                <select name="pid" id="">
+                    <?php foreach ($menu as $k=>$v){ ?>
+                        <option value="<?php echo $v['id']; ?>" <?php echo (isset($pid) && $pid == $v['id'])?'selected':''; ?>><?php echo $v['name']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div class="uk-form-row">
             <label class="uk-form-label uk-text-bold uk-text-primary" for="ICP">状态</label>
             <div class="uk-form-controls">
                 <input type="radio" name="status" value="1" checked>可用

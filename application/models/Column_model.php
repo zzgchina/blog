@@ -23,7 +23,8 @@ class Column_model extends CI_Model
             'adddate'=>time(),
             'descript'=>$data['descript'],
             'token'=>md5(time()),
-            'status'=>$data['status']
+            'status'=>$data['status'],
+            'pid'=>$data['pid']
         );
         if(!empty($data['token']))
         {
