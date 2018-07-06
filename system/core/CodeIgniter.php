@@ -376,6 +376,20 @@ if ( ! is_php('5.4'))
 
 	// Set a mark point for benchmarking
 	$BM->mark('loading_time:_base_classes_end');
+    /**
+     * 添加引入类
+     */
+    if($CFG->config['class'])
+    {
+
+        foreach ($CFG->config['class'] as $class)
+        {
+            if (file_exists(APPPATH.'core/'.$CFG->config['subclass_prefix'].$class.'.php'))
+            {
+                require_once APPPATH.'core/'.$CFG->config['subclass_prefix'].$class.'.php';
+            }
+        }
+    }
 
 /*
  * ------------------------------------------------------
