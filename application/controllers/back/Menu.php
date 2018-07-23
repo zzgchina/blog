@@ -58,7 +58,7 @@ class Menu extends MY_Controller
     public function get_list($id=0)
     {
         $data['list']  = $this->menuq->get('',$this->menuq->table.'.* ,a.name pname',' left join '.$this->menuq->table.' as a on '.$this->menuq->table.'.pid=a.id ');
-        $data['list']  = get_son($data['list']);
+        $data['list']  = get_son($data['list'],0,0, 'id','pid', '--',FALSE);
         $this->load->view('admin/menu/list',$data);
     }
     /**

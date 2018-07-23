@@ -58,3 +58,5 @@ $route['menu/(.+)'] = 'back/menu/$1';
 $route['column/(.+)'] = 'back/column/$1';
 $route['article/(.+)'] = 'back/article/$1';
 $route['nav/(.+)'] = 'back/nav/$1';
+$route['admin/adv/(.+)'] = 'back/adv/$1';
+

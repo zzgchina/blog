@@ -15,7 +15,7 @@
  * @param string $id_name  ID名称
  * @param string $pid_name 父ID名称
  * @param string $delmelt  前缀符号
- * @param bool  $status  数组构造
+ * @param bool  $status  数组构造;true:获取菜单形式的列表,false:顺序
  * @return array
  */
 
