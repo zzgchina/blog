@@ -7,7 +7,7 @@
  * Time: 14:54
  */
 
-class Menu extends MY_controller
+class Menu extends MY_Controller
 {
     public function __construct()
     {

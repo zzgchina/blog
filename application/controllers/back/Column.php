@@ -6,7 +6,7 @@
  * Time: 17:11
  */
 
-class Column extends MY_controller
+class Column extends MY_Controller
 {
     public function __construct()
     {

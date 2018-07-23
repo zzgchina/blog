@@ -6,7 +6,7 @@
  * Time: 15:00
  */
 
-class Article_model extends MY_model
+class Article_model extends MY_Model
 {
     public function __construct()
     {

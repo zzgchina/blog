@@ -6,7 +6,7 @@
  * Time: 10:25
  */
 
-class Nav extends MY_controller
+class Nav extends MY_Controller
 {
     public function __construct()
     {

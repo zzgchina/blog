@@ -6,7 +6,7 @@
  * Time: 13:39
  */
 
-class MY_controller extends CI_Controller
+class MY_Controller extends CI_Controller
 {
     public $login_status = FALSE;
     public function __construct()

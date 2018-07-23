@@ -6,7 +6,7 @@
  * Time: 17:13
  */
 
-class Article extends MY_controller
+class Article extends MY_Controller
 {
     public function __construct()
     {

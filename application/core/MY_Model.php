@@ -6,7 +6,7 @@
  * Time: 15:00
  */
 
-class MY_model extends CI_Model
+class MY_Model extends CI_Model
 {
     public $table = '';
     public $tablename = '';

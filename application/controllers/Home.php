@@ -15,7 +15,10 @@ class Home extends MY_home
 
     public function index()
     {
+
        $data['nav']=$this->nav_data;
         $this->load->view('home/home',$data);
     }
+
+
 }
